@@ -7,16 +7,17 @@ public class FIFORhymer extends probablySomethingWithFifo {
 
 
     @Override
-    public int countOut() {
-        while (!callCheck())
+    public int removeFromTop() {
+        while (!checkIfEmpty())
 
-            fifoRymowacz.countIn(super.countOut());
+            fifoRymowacz.putOnTop(super.removeFromTop());
 
-        int currentSize = fifoRymowacz.countOut();
+        int currentSize = fifoRymowacz.removeFromTop();
 
-        while (!fifoRymowacz.callCheck())
+        while (!fifoRymowacz.checkIfEmpty())
 
-            countIn(fifoRymowacz.countOut());
+            putOnTop(fifoRymowacz.removeFromTop());
+
 
         return currentSize;
     }

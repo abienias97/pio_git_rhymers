@@ -5,27 +5,27 @@ public class probablySomethingWithFifo {
     private final int[] NUMBERS = new int[12];
     public int total = -1;
 
-    public void countIn(int in) {
-        if (!isFull())
+    public void putOnTop(int in) {
+        if (!checkIfFull())
             NUMBERS[++total] = in;
     }
 
-    public boolean callCheck() {
+    public boolean checkIfEmpty() {
         return total == -1;
     }
 
-    public boolean isFull() {
+    public boolean checkIfFull() {
         return total == 11;
     }
 
-    protected int peekaboo() {
-        if (callCheck())
+    protected int showElementFromTop() {
+        if (checkIfEmpty())
             return -1;
         return NUMBERS[total];
     }
 
-    public int countOut() {
-        if (callCheck())
+    public int removeFromTop() {
+        if (checkIfEmpty())
             return -1;
         return NUMBERS[total--];
     }

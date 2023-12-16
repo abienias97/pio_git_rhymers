@@ -8,10 +8,10 @@ public class HanoiRhymer extends probablySomethingWithFifo {
         return totalRemoved;
     }
 
-    public void countIn(int in) {
-        if (!callCheck() && in > peekaboo())
+    public void putOnTop(int in) {
+        if (!checkIfEmpty() && in > showElementFromTop())
             totalRemoved++;
         else
-            super.countIn(in);
+            super.putOnTop(in);
     }
 }
