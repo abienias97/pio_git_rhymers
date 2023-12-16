@@ -7,71 +7,71 @@ public class RhymersJUnitTest {
 
     @Test
     public void testCountIn() {
-        defaultCountingOutRhymer rhymer = new defaultCountingOutRhymer();
+        probablySomethingWithFifo rhymer = new probablySomethingWithFifo();
         int testValue = 4;
-        rhymer.countIn(testValue);
+        rhymer.putOnTop(testValue);
 
-        int result = rhymer.peekaboo();
+        int result = rhymer.showElementFromTop();
         Assert.assertEquals(testValue, result);
     }
 
     @Test
     public void testCallCheck() {
-        defaultCountingOutRhymer rhymer = new defaultCountingOutRhymer();
-        boolean result = rhymer.callCheck();
+        probablySomethingWithFifo rhymer = new probablySomethingWithFifo();
+        boolean result = rhymer.checkIfEmpty();
         Assert.assertTrue(result);
 
-        rhymer.countIn(888);
+        rhymer.putOnTop(888);
 
-        result = rhymer.callCheck();
+        result = rhymer.checkIfEmpty();
         Assert.assertFalse(result);
     }
 
     @Test
     public void testIsFull() {
-        defaultCountingOutRhymer rhymer = new defaultCountingOutRhymer();
+        probablySomethingWithFifo rhymer = new probablySomethingWithFifo();
         final int STACK_CAPACITY = 12;
         for (int i = 0; i < STACK_CAPACITY; i++) {
-            boolean result = rhymer.isFull();
+            boolean result = rhymer.checkIfFull();
             Assert.assertFalse(result);
-            rhymer.countIn(888);
+            rhymer.putOnTop(888);
         }
 
-        boolean result = rhymer.isFull();
+        boolean result = rhymer.checkIfFull();
         Assert.assertTrue(result);
     }
 
     @Test
     public void testPeekaboo() {
-        defaultCountingOutRhymer rhymer = new defaultCountingOutRhymer();
+        probablySomethingWithFifo rhymer = new probablySomethingWithFifo();
         final int EMPTY_STACK_VALUE = -1;
 
-        int result = rhymer.peekaboo();
+        int result = rhymer.showElementFromTop();
         Assert.assertEquals(EMPTY_STACK_VALUE, result);
 
         int testValue = 4;
-        rhymer.countIn(testValue);
+        rhymer.putOnTop(testValue);
 
-        result = rhymer.peekaboo();
+        result = rhymer.showElementFromTop();
         Assert.assertEquals(testValue, result);
-        result = rhymer.peekaboo();
+        result = rhymer.showElementFromTop();
         Assert.assertEquals(testValue, result);
     }
 
     @Test
     public void testCountOut() {
-        defaultCountingOutRhymer rhymer = new defaultCountingOutRhymer();
+        probablySomethingWithFifo rhymer = new probablySomethingWithFifo();
         final int EMPTY_STACK_VALUE = -1;
 
-        int result = rhymer.countOut();
+        int result = rhymer.removeFromTop();
         Assert.assertEquals(EMPTY_STACK_VALUE, result);
 
         int testValue = 4;
-        rhymer.countIn(testValue);
+        rhymer.putOnTop(testValue);
 
-        result = rhymer.countOut();
+        result = rhymer.removeFromTop();
         Assert.assertEquals(testValue, result);
-        result = rhymer.countOut();
+        result = rhymer.removeFromTop();
         Assert.assertEquals(EMPTY_STACK_VALUE, result);
     }
 

@@ -1,6 +1,6 @@
 package edu.kis.vh.nursery;
 
-public class HanoiRhymer extends defaultCountingOutRhymer {
+public class HanoiRhymer extends probablySomethingWithFifo {
 
     int totalRemoved = 0;
 
@@ -8,10 +8,10 @@ public class HanoiRhymer extends defaultCountingOutRhymer {
         return totalRemoved;
     }
 
-    public void countIn(int in) {
-        if (!callCheck() && in > peekaboo())
+    public void putOnTop(int in) {
+        if (!checkIfEmpty() && in > showElementFromTop())
             totalRemoved++;
         else
-            super.countIn(in);
+            super.putOnTop(in);
     }
 }
