@@ -1,6 +1,6 @@
 package edu.kis.vh.nursery;
 
-public class defaultCountingOutRhymer {
+public class probablySomethingWithFifo {
     //przełącza karty projektu
     private final int[] NUMBERS = new int[12];
     public int total = -1;
